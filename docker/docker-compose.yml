@@ -3,7 +3,7 @@ version: '2'
 
 services:
 
-  consul_srv:
+  consul:
     image: bitnami/consul:1.5.3
     ports:
       - '8300:8300'

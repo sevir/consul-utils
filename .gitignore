@@ -1,1 +1,4 @@
 .vscode
+envconsul/envconsul
+consul-template/consul-template
+consul-template/output.txt

@@ -1,0 +1,1 @@
+{{ key "env_test/hello" }}
