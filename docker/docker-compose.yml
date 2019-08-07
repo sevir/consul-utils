@@ -3,15 +3,18 @@ version: '2'
 
 services:
 
-  consul:
+  consul_srv:
     image: bitnami/consul:1.5.3
     ports:
       - '8300:8300'
       - '8301:8301'
       - '8301:8301/udp'
-      - 'localhost:8500:8500'
+      - '127.0.0.1:8500:8500'
       - '8600:8600'
       - '8600:8600/udp'
+    network_mode: bridge
+    labels:
+      - SERVICE_IGNORE
     volumes:
       - consul-data:/bitnami
     environment:
