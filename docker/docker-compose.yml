@@ -1,0 +1,33 @@
+---
+version: '2'
+
+services:
+
+  consul:
+    image: bitnami/consul:1.5.3
+    ports:
+      - '8300:8300'
+      - '8301:8301'
+      - '8301:8301/udp'
+      - 'localhost:8500:8500'
+      - '8600:8600'
+      - '8600:8600/udp'
+    volumes:
+      - consul-data:/bitnami
+    environment:
+      # Use https://www.uuidgenerator.net/ for generate a random UUID Token
+      CONSUL_LOCAL_CONFIG: |
+        {
+          "acl" : {
+            "enabled" : true,
+            "default_policy" : "deny",
+            "enable_token_persistence" : true
+          },
+          "acl_master_token": "b2f37c46-dd56-4b0b-84d7-60694b9f0a71",
+          "acl_agent_master_token": "b2f37c46-dd56-4b0b-84d7-60694b9f0a71",
+          "acl_agent_token": "b2f37c46-dd56-4b0b-84d7-60694b9f0a71",
+          "acl_default_policy": "deny"
+        }
+volumes:
+  consul-data:
+    driver: local
